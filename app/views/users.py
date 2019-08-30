@@ -95,14 +95,9 @@ def add_user(username, password, firstname, lastname, email):
 
 def validate_username(username):
     user = User.query.filter_by(username=username).first()
-    if user:
-        return False
-    return True
+    return user is None
 
 
 def validate_email(email):
     user = User.query.filter_by(email=email).first()
-    if user:
-        return False
-    return True
-
+    return user is None
