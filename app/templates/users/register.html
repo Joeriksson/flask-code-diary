@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Fill in the form below to create your account</h1>
+        <div>
+                <form method="POST" action="register">
+                <label for="User Creation">Create your User</label><br>
+                <div class="form-group">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username"><br>
+                </div>
+                 <div class="form-group">
+                     <label for="firstname">Firstname: </label>
+                    <input type="text" name="firstname"><br>
+                </div>
+                 <div class="form-group">
+                     <label for="lastname">Lastname: </label>
+                    <input type="text" name="lastname"><br>
+                </div>
+                <div class="form-group">
+                     <label for="email">E-mail: </label>
+                    <input type="email" name="email"><br>
+                </div>
+                 <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password">
+                 </div>
+                 <div class="form-group">
+                    <button class="btn btn-secondary" type="submit" value="Submit">Submit</button>
+                    <a class="btn btn-secondary" href="{{ url_for('index') }}" role="button">Cancel</a>
+                 </div>
+             </form>
+        </div>
+    </div>
+    <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endwith %}
+    </div>
+
+{% endblock %}

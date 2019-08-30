@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
     firstname = db.Column(db.String(100), unique=False)
     lastname = db.Column(db.String(100), unique=False)
     email = db.Column(db.String(100))
+    diaries = db.relationship('Diary', backref='user', lazy=True)
 
     def __repr__(self):
         return f'User {self.username}'

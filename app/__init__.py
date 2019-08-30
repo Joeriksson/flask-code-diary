@@ -16,4 +16,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site_user.db'
 app.secret_key = os.urandom(12)
 
 from app import routes
-from app.models import users
+from app.models.users import User
+from app.models.diaries import Diary
+
