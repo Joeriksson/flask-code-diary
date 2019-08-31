@@ -14,6 +14,7 @@ diary_blueprint = Blueprint('diaries', __name__)
 @login_required
 def index():
     diaries = Diary.query.order_by(Diary.created_date.desc()).all()
+
     return render_template('diaries/index.html', diaries=diaries)
 
 
@@ -25,9 +26,9 @@ def add_diary():
         title = request.form.get('title')
         description = request.form.get('description')
         link = request.form.get('link')
-        diary = add_diary(user_id, title, description, link)
+        diary = add_diary_to_db(user_id, title, description, link)
 
-        flash('Diary entry added')
+        flash(f'Diary entry {diary.title} added')
 
         return redirect(url_for('diaries.index'))
 
@@ -44,6 +45,7 @@ def edit_diary(diary_id):
         diary.link = request.form.get('link')
         db.session.commit()
         flash('Diary entry updated')
+
         return redirect(url_for('diaries.index'))
 
     return render_template('diaries/edit.html', diary=diary)
@@ -59,15 +61,17 @@ def delete_diary(diary_id):
     return redirect(url_for('diaries.index'))
 
 
-def add_diary(user_id, title, description, link):
+def add_diary_to_db(user_id, title, description, link):
     # noinspection PyArgumentList
     diary = Diary(user_id=user_id, title=title, description=description, link=link)
     db.session.add(diary)
     db.session.commit()
-    flash('Diary Created')
+    flash('Diary entry created')
+
     return diary
 
 
 def load_diary(diary_id):
     diary = Diary.query.filter_by(id=diary_id).first()
+
     return diary
