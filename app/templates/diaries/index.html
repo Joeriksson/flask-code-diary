@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ current_user.firstname }} {{ current_user.lastname }}'s diary</h1>
+        <br>
+        <div class="input-group d-flex">
+            <button class="btn btn-secondary flex-fill">Below are your diary entries</button>
+            <div class="input-group-append ml-auto" id="button-addon3">
+                <a href="{{ url_for('diaries.add_diary') }}" class="btn btn-dark">New entry</a>
+            </div>
+        </div>
+
+        <div>
+            <ul class="list-group">
+                {% for diary in diaries %}
+                    <li class="list-group-item">
+                        {{ diary.created_date.strftime('%Y-%m-%d %H:%M') }}<br>
+                        <strong>{{ diary.title }}</strong><br>
+                        {{ diary.description }}<br><br>
+                        <a href="{{ diary.link }}" class="btn btn-outline-dark btn-sm">
+                            Link to the work done
+                        </a><br><br>
+
+                        <a href="{{ url_for('diaries.edit_diary', diary_id=diary.id) }}" class="btn btn-dark btn-sm">edit</a>
+                        <a href="{{ url_for('diaries.delete_diary', diary_id=diary.id) }}" class="btn btn-dark btn-sm">delete</a>
+                    </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+    </div>
+{% endblock %}

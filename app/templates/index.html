@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    Hello
+    <div class="container text-center">
+        <h1>Welcome to the Code Diary App!</h1>
+        Click on "My diary" in the top menu to see your diary entries.
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='images/diary.png') }}" height="50%" width="50%">
+        </div>
+    </div>
 {% endblock %}

@@ -1,9 +1,9 @@
+import bcrypt
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
-import bcrypt
+
 from app import app, db
 from app.models.users import User
-
 
 user_blueprint = Blueprint('users', __name__)
 
