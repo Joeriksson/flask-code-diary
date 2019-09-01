@@ -29,7 +29,7 @@ def add_diary():
         link = request.form.get('link')
         diary = add_diary_to_db(user_id, title, description, link)
 
-        flash(f'Diary entry {diary.title} added')
+        flash(f'Diary entry \"{diary.title}\" added')
 
         return redirect(url_for('diaries.index'))
 
@@ -45,7 +45,7 @@ def edit_diary(diary_id):
         diary.description = request.form.get('description')
         diary.link = request.form.get('link')
         db.session.commit()
-        flash('Diary entry updated')
+        flash(f'Diary entry \"{diary.title}\" updated')
 
         return redirect(url_for('diaries.index'))
 
@@ -58,6 +58,7 @@ def delete_diary(diary_id):
     diary = load_diary(diary_id)
     db.session.delete(diary)
     db.session.commit()
+    flash(f'Diary entry \"{diary.title}\" deleted')
 
     return redirect(url_for('diaries.index'))
 
@@ -67,7 +68,6 @@ def add_diary_to_db(user_id, title, description, link):
     diary = Diary(user_id=user_id, title=title, description=description, link=link)
     db.session.add(diary)
     db.session.commit()
-    flash('Diary entry created')
 
     return diary
 

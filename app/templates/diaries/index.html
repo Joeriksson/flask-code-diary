@@ -4,12 +4,25 @@
     <div class="container">
         <h1>{{ current_user.firstname }} {{ current_user.lastname }}'s diary</h1>
         <br>
+        <!-- Show any flashed messages -->
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes bg-light">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
         <div class="input-group d-flex">
             <button class="btn btn-secondary flex-fill">Below are your diary entries</button>
             <div class="input-group-append ml-auto" id="button-addon3">
                 <a href="{{ url_for('diaries.add_diary') }}" class="btn btn-dark">New entry</a>
             </div>
         </div>
+
 
         <div>
             <ul class="list-group">
@@ -41,7 +54,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <h3>{{ diary.title }}??</h3>
+                                    <h3>{{ diary.title }}</h3>
                                     <p>Are you sure that you want to delete this post?</p>
                                 </div>
                                 <div class="modal-footer">
@@ -58,17 +71,6 @@
                     </div>
                 {% endfor %}
             </ul>
-        </div>
-        <div>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul class="flashes">
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
         </div>
 
     </div>

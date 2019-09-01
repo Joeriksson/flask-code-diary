@@ -4,7 +4,17 @@
     <div class="container text-center">
 
         <h1>Login to your Code Diary</h1>
-
+        <div class="text-center">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes bg-warning">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
         <form method="POST">
             <div class="row">
                 <div class="col-sm"></div>

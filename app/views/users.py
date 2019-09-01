@@ -27,8 +27,7 @@ def register_user():
             password = request.form.get('password')
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-            user = add_user(username, hashed, firstname, lastname, email)
+            user = add_user(username, password, firstname, lastname, email)
             login_user(user)
             return render_template('index.html')
 
@@ -45,7 +44,7 @@ def login():
             if bcrypt.checkpw(request.form.get('password').encode('utf-8'), user.password):
                 login_user(user)
                 return redirect(url_for('index'))
-        return 'Invalid username or password'
+        flash('Invalid username or password', "error")
 
     return render_template('users/login.html')
 
