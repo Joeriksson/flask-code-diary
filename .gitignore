@@ -102,4 +102,4 @@ __pycache__/
 *.so
 
 # Exclude the DB
-app/site_user.db
+# app/site_user.db
