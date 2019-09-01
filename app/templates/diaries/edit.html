@@ -1,26 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
+    <div class="container text-center">
         <h1>Edit your diary entry</h1>
         <div>
             <form method="POST">
-                <label for="Diary Creation">Edit your diary entry</label><br>
+                <div class="row">
+                    <div class="col-sm"></div>
+                    <div class="col-md text-left">
+                        <label for="Diary Creation">Edit your diary entry</label>
+                    </div>
+                    <div class="col-sm"></div>
+                </div>
+
                 <div class="form-group">
-                    <label for="title">Title: </label>
-                    <input type="text" name="title" value="{{ diary.title }}"><br>
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="title">Title: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <input class="w-100" type="text" name="title" value="{{ diary.title }}">
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description: </label>
-                    <textarea name="description" rows="10">{{ diary.description }}</textarea>
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="description">Description: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <textarea class="w-100" name="description" rows="10">{{ diary.description }}</textarea>
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="link">Link: </label>
-                    <input type="url" name="link" value="{{ diary.link }}"><br>
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="link">Link: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <input class="w-100" type="url" name="link" value="{{ diary.link }}">
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-secondary" type="submit" value="Submit">Submit</button>
-                    <a class="btn btn-secondary" href="{{ url_for('diaries.index') }}" role="button">Cancel</a>
+                    <div class="row">
+                        <div class="col-sm text-right"></div>
+                        <div class="col-md text-left">
+                            <button class="btn btn-secondary" type="submit" value="Submit">Submit</button>
+                            <a class="btn btn-secondary" href="{{ url_for('diaries.index') }}" role="button">Cancel</a>
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
                 </div>
             </form>
         </div>

@@ -1,22 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-    <h1>Login to your Code Diary</h1>
+    <div class="container text-center">
 
+        <h1>Login to your Code Diary</h1>
 
-     <form method="POST">
-        <label for="User login">Login</label><br>
-         <div class="form-group">
-        <input type="text" name="username" placeholder="Type your username"><br>
-      </div>
-         <div class="form-group">
-        <input type="password" name="password"><br>
-         </div>
-         <div class="form-group">
-        <button class="btn btn-secondary" type="submit" value="Submit">Submit</button>
-         </div>
-    </form>
+        <form method="POST">
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-md text-left">
+                    <label for="User login"></label>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm text-right">
+                        <label for="username">Username: </label>
+                    </div>
+                    <div class="col-md text-left">
+                        <input type="text" name="username" placeholder="Type your username"><br>
+                    </div>
+                    <div class="col-sm"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm text-right">
+                        <label for="password">Password: </label>
+                    </div>
+                    <div class="col-md text-left">
+                        <input type="password" name="password" placeholder="Type your password"><br>
+                    </div>
+                    <div class="col-sm"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm text-right"></div>
+                    <div class="col-md text-left">
+                        <button class="btn btn-secondary" type="submit" value="Submit">Submit</button>
+                    </div>
+                    <div class="col-sm"></div>
+                </div>
+            </div>
+        </form>
     </div>
 
 {% endblock %}

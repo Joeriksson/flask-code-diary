@@ -1,48 +1,96 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
+    <div class="container text-center">
         <h1>Fill in the form below to create your account</h1>
         <div>
-                <form method="POST" action="register">
-                <label for="User Creation">Create your User</label><br>
-                <div class="form-group">
-                    <label for="username">Username: </label>
-                    <input type="text" name="username"><br>
-                </div>
-                 <div class="form-group">
-                     <label for="firstname">Firstname: </label>
-                    <input type="text" name="firstname"><br>
-                </div>
-                 <div class="form-group">
-                     <label for="lastname">Lastname: </label>
-                    <input type="text" name="lastname"><br>
+            <form method="POST" action="register">
+                <div class="row">
+                    <div class="col-sm"></div>
+                    <div class="col-md text-left">
+                        <label for="Registration">Register</label><br>
+                    </div>
+                    <div class="col-sm"></div>
                 </div>
                 <div class="form-group">
-                     <label for="email">E-mail: </label>
-                    <input type="email" name="email"><br>
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="username">Username: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <input type="text" name="username">
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
                 </div>
-                 <div class="form-group">
-                    <label for="password">Password: </label>
-                    <input type="password" name="password">
-                 </div>
-                 <div class="form-group">
-                    <button class="btn btn-secondary" type="submit" value="Submit">Submit</button>
-                    <a class="btn btn-secondary" href="{{ url_for('index') }}" role="button">Cancel</a>
-                 </div>
-             </form>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="firstname">Firstname: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <input type="text" name="firstname">
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="lastname">Lastname: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <input type="text" name="lastname">
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="email">E-mail: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <input type="email" name="email">
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm text-right">
+                            <label for="password">Password: </label>
+                        </div>
+                        <div class="col-md text-left">
+                            <input type="password" name="password">
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm"></div>
+                        <div class="col-md text-left">
+                            <button class="btn btn-secondary" type="submit" value="Submit">Submit</button>
+                            <a class="btn btn-secondary" href="{{ url_for('index') }}" role="button">Cancel</a>
+                        </div>
+                        <div class="col-sm"></div>
+                    </div>
+
+                </div>
+            </form>
         </div>
     </div>
     <div>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
                 <ul class="flashes">
                     {% for message in messages %}
                         <li>{{ message }}</li>
                     {% endfor %}
                 </ul>
-                {% endif %}
-            {% endwith %}
+            {% endif %}
+        {% endwith %}
     </div>
 
 {% endblock %}

@@ -13,7 +13,8 @@ diary_blueprint = Blueprint('diaries', __name__)
 @diary_blueprint.route('/')
 @login_required
 def index():
-    diaries = Diary.query.order_by(Diary.created_date.desc()).all()
+    user_id = current_user.get_id()
+    diaries = Diary.query.filter_by(user_id=user_id).order_by(Diary.created_date.desc()).all()
 
     return render_template('diaries/index.html', diaries=diaries)
 
