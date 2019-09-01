@@ -100,3 +100,6 @@ __pycache__/
 
 # C extensions
 *.so
+
+# Exclude the DB
+app/site_user.db
