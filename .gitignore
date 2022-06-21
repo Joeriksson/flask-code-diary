@@ -103,3 +103,5 @@ __pycache__/
 
 # Exclude the DB
 # app/site_user.db
+
+venv
